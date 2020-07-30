@@ -22,15 +22,25 @@ $('#weather-form').on('submit', (evt) => {
 
   const formData = {
     // TODO: select the zipcode input
-    zipcode: $('REPLACE THIS').val()
+    //put ID for zipcode field by inspecting the element on the field for entering zipcode 
+    //using brwser development tools.
+    zipcode: $('#zipcode-field').val()
   };
 
   // TODO: choose a request method (GET or POST) by uncommenting one of
   // these blocks of code
 
-  // $.get('/replaceMe', formData, (response) => {
-  //   // Fill in the callback function
-  // });
+// placed the route in .get URL placeholder
+
+  $.get('/weather', formData, (response) => {
+    //weather-info from inspecting response div
+
+    //after weeather-info:
+    //forecast from console.log(response) hard refresh browser and checking console.
+    //because the instructions said take out the temp field
+    $('#weather-info').html(response.forecast);
+    //console.log(response) //used to debug - reloaded browser console to see 
+  });
 
   // $.post('/replaceMe', formData, (response) => {
   //   // Fill in the callback function
